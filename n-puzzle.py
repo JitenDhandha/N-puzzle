@@ -1,15 +1,13 @@
 ####################################################################################
 # Jiten Dhandha, 2020                                                              #
-# A text-based N-puzzle (also known as sliding tile puzzle). Change the global     #
-# variable N to any dimension you would like! To cleanly exit the game, enter 'q'  #
-# or 'Q' as your input.                                                            #
+# A text-based N-puzzle (also known as sliding tile puzzle).                       #
 ####################################################################################
 
 import numpy as np
 
 #GLOBAL VARIABLES
 N = 2   #Dimensions of game board
-BOARD = np.zeros((N,N),dtype=int)   #The current state of the gome board
+BOARD = np.zeros((N,N),dtype=int)   #The current state of the game board
 CHKBOARD = np.zeros((N,N),dtype=int)    #The solved game board
 
 #Function that initializes both BOARD and CHKBOARD
