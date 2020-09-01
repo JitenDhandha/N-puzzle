@@ -8,21 +8,21 @@ import numpy as np
 #GLOBAL VARIABLES
 N = 2   #Dimensions of game board
 BOARD = np.zeros((N,N),dtype=int)   #The current state of the game board
-CHKBOARD = np.zeros((N,N),dtype=int)    #The solved game board
+CHKBOARD = np.zeros((N,N),dtype=int)	#The solved game board
 
 #Function that initializes both BOARD and CHKBOARD
 def create_board():
 
 	global N, BOARD, CHKBOARD
 
-    #Creating a "solved" game board
+	#Creating a "solved" game board
 	BOARD = BOARD.flatten()
 	for counter in range(1,N*N):
 		BOARD[counter-1] = counter
 	BOARD = BOARD.reshape(N,N)
 	BOARD[-1][-1] = 0
 
-    #Copying it over to CHKBOARD
+	#Copying it over to CHKBOARD
 	CHKBOARD[:] = BOARD[:]
 
 #Function that shuffles the BOARD into a solvable state
@@ -65,7 +65,7 @@ def print_board():
 	
 	global N, BOARD
 
-    #Printing a pretty game board
+	#Printing a pretty game board
 	print()
 	for i in range(N):
 		for j in range(N):
@@ -77,19 +77,19 @@ def swap_pieces(piece):
 
 	global N, BOARD
 
-    #Checking if input is an int
+	#Checking if input is an int
 	try:
 		piece = int(piece)
 	except:
 		print("Invalid input!")
 		return
 
-    #Checking if the input makes sense
+	#Checking if the input makes sense
 	if(piece<1 or piece>N*N-1 or piece==0):
 		print("Invalid input!")
 		return
 
-    #Attempting to move the piece
+	#Attempting to move the piece
 	r,c = np.where(BOARD==piece)
 	r0,c0 = np.where(BOARD==0)
 
@@ -106,14 +106,14 @@ def check_board():
 
 def main():
 
-    #Initializing the game
+	#Initializing the game
 	print("Starting game...")
 	create_board()
 	print("Randomizing board...")
 	randomize_board()
 	print_board()
 
-    #Taking turns till it's solved or game is quit
+	#Taking turns till it's solved or game is quit
 	while(not check_board()):
 		choice = input("Enter piece: ")
 		if(choice=='q' or choice=='Q'):
@@ -123,7 +123,7 @@ def main():
 			swap_pieces(choice)
 			print_board()
 
-    #Printing an encouraging message in case of a win ;)
+	#Printing an encouraging message in case of a win ;)
 	if(check_board()):
 		print("\nYou win! :)")
 
